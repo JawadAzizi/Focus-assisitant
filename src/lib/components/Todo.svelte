@@ -12,7 +12,6 @@
     console.log(title , description, progress)
 
     const handleDragEnd = (e)=>{
-
         console.log('dragEnd: ', e)
     }
     const handleDragStart = (e)=>{
@@ -21,27 +20,22 @@
         console.log('dragStart element:', e.target.getAttribute('id'))
     }
    
- 
-   
-
-
 </script>
 
 <div id={id} class="todo" draggable="true"  on:dragstart={handleDragStart}>
     <div  class="progBar" style={`background: linear-gradient(to right, #006aff ${progress}%, #d0d0d0 0px);`}>
-        
         {#if title !== undefined}
-        <El tag='h2' style='margin: 5px'>
+        <El style="pointer-events: none;margin: 5px" tag='h2' >
             {title}
         </El>
         {/if}
         {#if description !== undefined}
-                <El tag='p' style = 'margin: 5px'>
+                <El style="pointer-events: none; margin: 5px" tag='p' >
                     {description}
                 </El> 
         {/if}
-                
-        <El textAlign='center' tag='p' style='margin:5px; text-align:center'>
+        
+        <El textAlign='center' tag='p' style='margin:5px; text-align:center;pointer-events: none '>
             status: { status},
             progress: { progress}
         </El>
@@ -71,11 +65,6 @@
         border-radius: 10px;
         position: static;    
    }
-
-
-
-
-
 </style>
     
     

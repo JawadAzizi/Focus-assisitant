@@ -3,6 +3,7 @@
     import { createEventDispatcher } from "svelte";
     import store from '../../store/store'
     import Planed from "./Planed.svelte";
+    import App from "../../App.svelte";
 
     let showModal = false
     let data = {
@@ -28,9 +29,18 @@
                 description: data.description??"",
                 progress: 0,
                 status: "planed",
-                id: Math.max(...$store.map(e=>e.id))+1
+                id: Math.max(... $store.projects.filter(pro=> pro.title == $store.selectedProject)[0].todos.map(td => td.id))+1
             }
-        store.update( todos => [todo, ...todos])
+            console.log('id selections ', todo)
+        store.update( str => {
+            str.projects = str.projects.map(pro=>{
+                if(pro.title == str.selectedProject){
+                    pro.todos = [todo , ...pro.todos]
+                }
+                return pro
+            })
+            return str
+        })
         console.log("dataSaved")
         console.log("store", $store)
 
@@ -39,13 +49,12 @@
 
 </script>
 
-<button title="Create new todo" on:click={createNewTodo}><img alt ='New todo' src="./create.svg" ></button>
+<Button  title="Create new todo" on:click={createNewTodo}><img  alt ='New todo' src="./create.svg" ></Button>
 <Modal title='Create a ToDo' placement='top' bind:show={showModal} {...$$props}>
     <form on:submit={saveTodo} >
         <ModalBody>
             <FormInput bind:value={data.title} label='Title' type = 'text'  placeholder='Todo Title'/>
             <FormInput bind:value={data.description} label='Description' type = 'textarea' placeholder='descrpion' />
-    
         </ModalBody>
         <ModalFooter >
             <Button bgColor='danger' type='reset' on:click={()=>showModal = !showModal} >Cancel</Button>

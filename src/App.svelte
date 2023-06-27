@@ -7,91 +7,81 @@
     import TodoModal from './lib/components/TodoModal.svelte';
     import Header from './lib/components/Header.svelte';
     import 'yesvelte/css/tabler.min.css'
+    import {onMount} from 'svelte'
 
 	import store from './store/store'
-
+    import Todo from './lib/components/Todo.svelte';
+    import { User } from './services/auth';
   
 	// load the todos to store
-        // type T ={
-        // name:string,
-        // description: string,
-        // progress: number
-        // }
+        type T ={
+        name:string,
+        description: string,
+        progress: number
+        }
 	
-    let todos = [
-        {
-        id: 1,
-        title:" first todo",
-        description: 'this is first',
-        progress: 0,
-        status: "planed"
-        },
-        {
-        id: 2,
-        title:" second todo",
-        description: 'this is first',
-        progress: 90,
-        status: "progress"
-        },
-        {
-          id:3,  
-        title:" third todo",
-        description: 'this is first',
-        progress: 90,
-        status: "progress"
-        },
-        {
-            id: 4,
-        title:" forth todo",
-        description: 'this is second',
-        progress: 10,
-        status: "progress"
-        },
-        {
-            id: 5,
-        title:" fifth todo",
-        description: 'this is second',
-        progress: 50,
-        status: "progress"
-        },
-        {
-            id: 6,
-        title:" sixth todo",
-        description: 'this is second',
-        progress: 100,
-        status: "completed"
-        },
-        {
-            id: 7,
-        title:" seventh todo",
-        description: 'this is second',
-        progress: 100,
-        status: "completed"
-        },
-        {
-            id: 8,
-        title:" eight todo",
-        description: 'this is second',
-        progress: 100,
-        status: "completed"
-        },
-        {
-            id: 9,
-        title:" nineth todo",
-        description: 'this is second',
-        progress: 100,
-        status: "completed"
-        },
-    ]
-	$store = todos
+    let todos = []
+  
 
-    console.log($store)
+    type ProjectType = {
+        title: string,
+        users: any,
+        todos: any
+
+    }
+    let project:ProjectType[] = [] 
+    type UserStoreType={
+        userName: string,
+        email: string,
+        projects: ProjectType[],
+        selectedProject: string,
+        img: string,
+        accessToken: string
+    }
+    let userStore: UserStoreType = {
+        userName : '',
+        email: "",
+        projects : project,
+        selectedProject: '',
+        img: '',
+        accessToken : ''
+    }
+
+	$store = userStore
+    console.log("store: ", $store)
+//todo: 
+//1. we should authenticate
+//2. we load the data
+//3. if we could not determine the user then we serve it as guest
+
+    
+
+    onMount(async ()=>{
+        //check authentication
+        //if true load the projects
+        //if if not authenticated serve as guest
+        let user = new User()
+
+        await user.authunticate()
+        try{
+            if(user.accessToken){
+                console.log('autheticated')
+
+                
+            }else{
+
+                
+            }
+        }catch(e){
+            console.log("Error: ", e.message)
+        }
+    })
 
 </script>
 
 
-<Header></Header>
 
+<Header></Header>
 <Splitpanes >
 	<Pane >
         <Planed ></Planed>

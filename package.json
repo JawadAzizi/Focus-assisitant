@@ -19,6 +19,7 @@
     "vite": "^4.2.0"
   },
   "dependencies": {
+    "svelte-navigator": "^3.2.2",
     "svelte-splitpanes": "^0.7.13",
     "yesvelte": "^0.0.2-next.77"
   }
