@@ -8,6 +8,8 @@
     import {onMount} from 'svelte'
 
 	import store from './store/store'
+    import Todo from './lib/components/Todo.svelte';
+    import { User } from './services/auth';
   
 	// load the todos to store
         type T ={
