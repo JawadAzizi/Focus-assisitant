@@ -1,17 +1,13 @@
 <script lang="ts">
 	import {Pane, Splitpanes} from 'svelte-splitpanes'
-    import { Button, El } from 'yesvelte';
 	import Planed from './lib/components/Planed.svelte';
 	import Fineshed from './lib/components/Fineshed.svelte';
     import InProgress from './lib/components/InProgress.svelte'
-    import TodoModal from './lib/components/TodoModal.svelte';
     import Header from './lib/components/Header.svelte';
     import 'yesvelte/css/tabler.min.css'
     import {onMount} from 'svelte'
 
 	import store from './store/store'
-    import Todo from './lib/components/Todo.svelte';
-    import { User } from './services/auth';
   
 	// load the todos to store
         type T ={
