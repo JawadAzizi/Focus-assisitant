@@ -89,16 +89,6 @@ class User {
     isAuthenticated(){
 
     }
-    getProjects (){
-        request('/projects/'+this.userName, 'get', {})
-        .then(res => res.json())
-        .then(data => {
-            console.log('projects loaded sucessfully ', data)
-        })
-        .catch(error=>{
-            console.error('error getting projects : ', error)
-        })
-    }
 
 }
 
