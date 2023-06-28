@@ -55,9 +55,7 @@
     
 
     onMount(async ()=>{
-        //check authentication
-        //if true load the projects
-        //if if not authenticated serve as guest
+        
         let user = new User()
 
         await user.authunticate()
