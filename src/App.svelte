@@ -62,6 +62,9 @@
         try{
             if(user.accessToken){
                 console.log('autheticated')
+                //load the projects 
+                //load the todos
+                
 
                 
             }else{
