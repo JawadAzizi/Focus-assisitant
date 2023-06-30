@@ -68,7 +68,8 @@
 
                 
             }else{
-
+                //if the user is not authenticated 
+                //check the local storage for projects and todos
                 
             }
         }catch(e){
