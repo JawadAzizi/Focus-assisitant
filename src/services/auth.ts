@@ -1,5 +1,6 @@
 import { request } from "./index";
 import user from '../store/store'
+import { contenteditable_truthy_values } from "svelte/internal";
 
 class User {
     userName: string
@@ -39,7 +40,7 @@ class User {
     }
     async authunticate() {
         //authinticate
-        request('/refresh', 'get' )
+        await request('/refresh', 'get' )
         .then(res=>{
             if(res.ok){
                 return res.json()
@@ -86,10 +87,23 @@ class User {
         
         .catch(error => console.log('errror: ', error))
     }
-    isAuthenticated(){
+    async getProjects(){
+        await request('/projects', 'get')
+        .then((res)=>{
+            if(res.ok){
+                return res.json()
+            }else{throw new Error('error fetching projects: ', res.status)}
 
+        })
+        .then(data => {
+            console.log('projects loaded: ', data)
+            user.update((updater)=>{
+                updater.projects = data
+                return updater
+            })
+        })
+        .catch(error =>console.log("error loading projects: ", error))
     }
-
 }
 
 

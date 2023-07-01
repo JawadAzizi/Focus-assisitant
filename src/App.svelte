@@ -59,14 +59,15 @@
         let user = new User()
 
         await user.authunticate()
+        console.log('autheticated1')
+
         try{
-            if(user.accessToken){
+            if($store.accessToken){
                 console.log('autheticated')
                 //load the projects 
                 //load the todos
-                
+                user.getProjects()
 
-                
             }else{
                 //if the user is not authenticated 
                 //check the local storage for projects and todos
