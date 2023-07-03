@@ -52,12 +52,10 @@
 //2. we load the data
 //3. if we could not determine the user then we serve it as guest
 
-    
+let user = new User()
 
-    onMount(async ()=>{
+onMount(async ()=>{
         
-        let user = new User()
-
         await user.authunticate()
         console.log('autheticated1')
 
@@ -66,7 +64,7 @@
                 console.log('autheticated')
                 //load the projects 
                 //load the todos
-                user.getProjects()
+                
 
             }else{
                 //if the user is not authenticated 
@@ -77,6 +75,9 @@
             console.log("Error: ", e.message)
         }
     })
+
+$: if($store.accessToken) user.getProjects()
+
 
 </script>
 
