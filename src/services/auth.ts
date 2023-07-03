@@ -89,10 +89,10 @@ class User {
     }
     async getProjects(){
         await request('/projects', 'get')
-        .then((res)=>{
+        .then((res: Response)=>{
             if(res.ok){
                 return res.json()
-            }else{throw new Error('error fetching projects: ', res.status)}
+            }else{throw new Error('error fetching projects: '+ res.status)}
 
         })
         .then(data => {
