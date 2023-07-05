@@ -72,24 +72,11 @@ class User {
 
         })
         .catch(error => console.log('errror: ', error))
-
-    }
-    logOut(){
-        request('/logout', 'post', {})
-        .then(async res=> {
-            if(res.ok){
-                user.set({})
-                console.log('logout successfull')
-            }else{
-                throw new Error('error logingout')
-            }
-        })
         
-        .catch(error => console.log('errror: ', error))
     }
-    async getProjects(){
-        await request('/projects', 'get')
-        .then((res: Response)=>{
+    getProjects(){
+        request('/projects', 'get')
+        .then((res)=>{
             if(res.ok){
                 return res.json()
             }else{throw new Error('error fetching projects: '+ res.status)}
@@ -103,6 +90,19 @@ class User {
             })
         })
         .catch(error =>console.log("error loading projects: ", error))
+    }
+    logOut(){
+        request('/logout', 'post', {})
+        .then(async res=> {
+            if(res.ok){
+                user.set({})
+                console.log('logout successfull')
+            }else{
+                throw new Error('error logingout')
+            }
+        })
+        
+        .catch(error => console.log('errror: ', error))
     }
 }
 

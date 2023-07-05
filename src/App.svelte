@@ -76,8 +76,10 @@ onMount(async ()=>{
         }
     })
 
-$: if($store.accessToken) user.getProjects()
 
+store.subscribe(async val =>{
+    await user.getProjects()
+})
 
 </script>
 
