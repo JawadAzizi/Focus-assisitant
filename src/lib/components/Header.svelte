@@ -47,10 +47,12 @@
     }
     const handleSignIn = async (e)=>{
         e.preventDefault()
-        user.login(data.userName, data.password)
+        await user.login(data.userName, data.password)
+        signUpModal = false
 
-        if(user.accessToken) {
+        if($store.accessToken) {
             signUpModal = false
+            user.getProjects()
         }else{
             error = 'usign in faild'
         }
@@ -77,7 +79,7 @@
         <button class="y-el y-button y-button-icon" title="Drop todo to Delete"  on:drop={deleteTodo} on:dragover={handleDragOver} ><img alt="Delete" src = './trashbin.svg'></button>
     </El>
     <El>
-        <Button on:click={openLoginModal}>signIn</Button>
+        <Button on:click={openLoginModal}>sign In</Button>
         <!-- sign in modal -->
         <Modal bind:show={signInModal}>
             <ModalHeader justifyContent='center'>

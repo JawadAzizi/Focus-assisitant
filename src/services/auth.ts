@@ -11,12 +11,12 @@ class User {
         
     }
 
-    login(userName, password){
+    async login(userName, password){
         //log th user in
-        request('/signin', 'post' ,{userName : userName, password: password})
-        .then(res=>{
+        await request('/signin', 'post' ,{userName : userName, password: password})
+        .then(async res=>{
             if(res.ok){
-                return res.json()
+                return  await res.json()
             }else{
                 throw new Error('Error logining'+res.status)
             }

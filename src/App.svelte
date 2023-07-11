@@ -62,6 +62,7 @@ onMount(async ()=>{
         try{
             if($store.accessToken){
                 console.log('autheticated')
+                user.getProjects()
                 //load the projects 
                 //load the todos
                 
@@ -77,9 +78,6 @@ onMount(async ()=>{
     })
 
 
-store.subscribe(async val =>{
-    await user.getProjects()
-})
 
 </script>
 
