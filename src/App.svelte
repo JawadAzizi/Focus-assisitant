@@ -63,13 +63,14 @@ onMount(async ()=>{
             if($store.accessToken){
                 console.log('autheticated')
                 user.getProjects()
-                //load the projects 
-                //load the todos
+                // load the projects 
+                // load the todos
                 
 
             }else{
                 //if the user is not authenticated 
                 //check the local storage for projects and todos
+                //do something here
                 
             }
         }catch(e){
