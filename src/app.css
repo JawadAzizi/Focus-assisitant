@@ -7,6 +7,7 @@ body, #app{
 }
 
 :root{
+  /* forground */
   --color-forground-100: #cbcbcb;
   --color-forground-200: #ababab;
   --color-forground-300: #8b8b8b;
@@ -15,6 +16,8 @@ body, #app{
   --color-forground-600: #2b2b2b;
   --color-forground-700: #1a1a1a;
   --color-forground-800: #111111;
+
+  /* background */
   --color-background-100: #cbcbcb;
   --color-background-200: #ababab;
   --color-background-300: #8b8b8b;
@@ -23,5 +26,8 @@ body, #app{
   --color-background-600: #2b2b2b;
   --color-background-700: #1a1a1a;
   --color-background-800: #111111;
+
+
+
 }
 
