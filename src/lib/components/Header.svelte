@@ -12,6 +12,7 @@
     let signUpModal = false
     const data = {} as {userName: string, password: string, email: string}
 
+    //deltes an existing todo from project
     const deleteTodo = (e)=>{
         e.preventDefault()
         let todoId = e.dataTransfer.getData('todoId')
