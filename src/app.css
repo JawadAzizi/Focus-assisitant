@@ -44,6 +44,15 @@ body, #app{
   --color-error-600: #9e0404;
   --color-error-700: #830404;
   --color-error-800: #510000;
+  /* yellow */
+  --color-yollow-100: #fef497;
+  --color-yollow-200: #f6e549;
+  --color-yollow-300: #f0d438;
+  --color-yollow-400: #f2db09;
+  --color-yollow-500: #cdb901;
+  --color-yollow-600: #e6d007;
+  --color-yollow-700: #b8a604;
+  --color-yollow-800: #877a06;
 
 
 
