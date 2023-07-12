@@ -35,6 +35,15 @@ body, #app{
   --color-primary-600: #0832da;
   --color-primary-700: #0818f8;
   --color-primary-800: #040ec7;
+  /* secondary */
+  --color-error-100: #feadad;
+  --color-error-200: #ef5d5d;
+  --color-error-300: #f71919;
+  --color-error-400: #de0a0a;
+  --color-error-500: #b80404;
+  --color-error-600: #9e0404;
+  --color-error-700: #830404;
+  --color-error-800: #510000;
 
 
 
